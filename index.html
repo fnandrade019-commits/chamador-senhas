@@ -8,24 +8,24 @@
   </head>
   <body>
     <header>
-      <h1>Chamador de Senhas</h1>
+      <h1>CHAMADOR DE SENHAS</h1>
       <a href="tela.html" target="_blank">Abrir tela da TV</a>
     </header>
 
     <main>
-      <form id="form-pedido">
+      <form id="form-pedido" class="cartao"> 
         <label for="input-nome">Nome do cliente</label>
         <input id="input-nome" type="text" placeholder="Ex.: Maria" />
         <button type="submit">Gerar senha</button>
       </form>
 
-      <section>
+      <section class="cartao">
         <h2>Chamando agora</h2>
         <strong id="senha-atual">--</strong>
         <span id="nome-atual"></span>
       </section>
 
-      <section>
+      <section class="cartao">
         <h2>Fila de espera</h2>
         <ul id="fila"></ul>
       </section>
