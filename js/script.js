@@ -4,6 +4,7 @@ const inputNome = document.getElementById("input-nome");
 const listaFila = document.getElementById("fila");
 const senhaAtual = document.getElementById("senha-atual");
 const nomeAtual = document.getElementById("nome-atual");
+const btnZerar = document.getElementById("btn-zerar");
 
 let proximaSenha = 1;
 let fila = [];
@@ -36,6 +37,8 @@ function carregarDados() {
 // Mostra em "Chamando agora" quem foi chamado
 function mostrarChamado() {
   if (chamado === null) {
+    senhaAtual.textContent = "--";
+    nomeAtual.textContent = "";
     return;
   }
   senhaAtual.textContent = chamado.senha;
@@ -90,6 +93,23 @@ formPedido.addEventListener("submit", (evento) => {
   mostrarFila();
 
   inputNome.value = "";
+});
+
+// Quando clicar em "Zerar senhas"...
+btnZerar.addEventListener("click", () => {
+  const confirmou = confirm("Zerar todas as senhas e começar do 1?");
+
+  if (confirmou === false) {
+    return;
+  }
+
+  proximaSenha = 1;
+  fila = [];
+  chamado = null;
+
+  salvarDados();
+  mostrarChamado();
+  mostrarFila();
 });
 
 // Quando a página abre: pega os dados salvos e desenha a tela
