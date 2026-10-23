@@ -2,6 +2,17 @@
 const tvSenha = document.getElementById("tv-senha");
 const tvNome = document.getElementById("tv-nome");
 const tvFila = document.getElementById("tv-fila");
+const btnSom = document.getElementById("btn-som");
+
+let somAtivado = false;
+let ultimoChamado = null;
+
+// Fala um texto em voz alta, em português
+function falar(texto) {
+  const fala = new SpeechSynthesisUtterance(texto);
+  fala.lang = "pt-BR";
+  speechSynthesis.speak(fala);
+}
 
 // Lê a gaveta e desenha a tela
 function atualizarTela() {
@@ -13,13 +24,19 @@ function atualizarTela() {
 
   const dados = JSON.parse(texto);
 
-  // Quem está sendo chamado
+    // Quem está sendo chamado
   if (dados.chamado === null) {
     tvSenha.textContent = "--";
     tvNome.textContent = "";
+    ultimoChamado = null;
   } else {
     tvSenha.textContent = dados.chamado.senha;
     tvNome.textContent = dados.chamado.nome;
+
+    if (somAtivado && dados.chamado.senha !== ultimoChamado) {
+      falar("Senha " + dados.chamado.senha + ", " + dados.chamado.nome);
+    }                                               
+    ultimoChamado = dados.chamado.senha;
   }
 
   // Quem está aguardando
@@ -39,4 +56,12 @@ window.addEventListener("storage", (evento) => {
   if (evento.key === "chamador") {
     atualizarTela();
   }
+});
+
+// Quando clicar no botão: libera o som e coloca em tela cheia
+btnSom.addEventListener("click", () => {
+  somAtivado = true;
+  btnSom.remove();
+  falar("Som ativado");
+  document.documentElement.requestFullscreen();
 });
