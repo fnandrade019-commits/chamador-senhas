@@ -64,6 +64,7 @@ function atualizarTela() {
       }, 1500);
     }
     ultimoChamado = dados.chamado.hora;
+  }
 
   // Quem está aguardando
   tvFila.innerHTML = "";
