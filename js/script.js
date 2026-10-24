@@ -5,6 +5,7 @@ const listaFila = document.getElementById("fila");
 const senhaAtual = document.getElementById("senha-atual");
 const nomeAtual = document.getElementById("nome-atual");
 const btnZerar = document.getElementById("btn-zerar");
+const btnRepetir = document.getElementById("btn-repetir");
 
 let proximaSenha = 1;
 let fila = [];
@@ -49,6 +50,7 @@ function mostrarChamado() {
 function chamarCliente(cliente) {
   fila = fila.filter((c) => c.senha !== cliente.senha);
   chamado = cliente;
+  chamado.hora = Date.now();
 
   salvarDados();
   mostrarChamado();
@@ -93,6 +95,17 @@ formPedido.addEventListener("submit", (evento) => {
   mostrarFila();
 
   inputNome.value = "";
+});
+
+// Quando clicar em "Chamar de novo"...
+btnRepetir.addEventListener("click", () => {
+  if (chamado === null) {
+    alert("Ninguém foi chamado ainda!");
+    return;
+  }
+
+  chamado.hora = Date.now();
+  salvarDados();
 });
 
 // Quando clicar em "Zerar senhas"...

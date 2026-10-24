@@ -103,3 +103,8 @@ h2 {
 .btn-zerar:hover {
   background: #6c6c6c;
 }
+
+.btn-repetir {
+  display: block;
+  margin-top: 16px;
+}

@@ -57,16 +57,13 @@ function atualizarTela() {
     tvSenha.textContent = dados.chamado.senha;
     tvNome.textContent = dados.chamado.nome;
 
-    if (somAtivado && dados.chamado.senha !== ultimoChamado) {
+      if (somAtivado && dados.chamado.hora !== ultimoChamado) {
       dingDong();
-      setTimeout(
-        () => falar("Senha " + dados.chamado.senha + ", " + dados.chamado.nome),
-        1500,
-      );
+      setTimeout(() => {
+        falar("Senha " + dados.chamado.senha + ", " + dados.chamado.nome);
+      }, 1500);
     }
-
-    ultimoChamado = dados.chamado.senha;
-  }
+    ultimoChamado = dados.chamado.hora;
 
   // Quem está aguardando
   tvFila.innerHTML = "";
