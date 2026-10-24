@@ -2,7 +2,7 @@
 
 Sistema de chamada de senhas que eu criei para uma lanchonete. O atendente cadastra o nome do cliente no computador e, quando o pedido fica pronto, a TV toca um ding-dong, mostra a senha e o nome e anuncia em voz alta.
 
-🔗 **Teste aqui:** [vamos colocar o link no pedaço 3]
+🔗 **Teste aqui:** 
 
 ## O problema que ele resolve
 
